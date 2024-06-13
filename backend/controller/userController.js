@@ -77,7 +77,8 @@ const loginUser = asyncHandler(async (req, res) => {
             res.status(201).json({
                 _id: existingUser._id,
                 username: existingUser.username, 
-                password: existingUser.password
+                password: existingUser.password,
+                isAdmin: existingUser.isAdmin
             })
             return 
         }
@@ -98,4 +99,14 @@ const logoutUser = asyncHandler(async (req, res) => {
         .json({ message: "Removed" })
 })
 
-export {createUser, loginUser,logoutUser}
+const getAllUsers = asyncHandler(async (req,res) => {
+    const user = await User.find({})
+    res.json(user)
+})
+
+export {
+    createUser,
+    loginUser,
+    logoutUser,
+    getAllUsers
+}
