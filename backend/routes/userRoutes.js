@@ -3,7 +3,8 @@ import {
     createUser,
     loginUser,
     logoutUser,
-    getAllUsers
+    getAllUsers,
+    getSpecificProfile
 }
 from '../controller/userController.js'
 
@@ -30,5 +31,9 @@ router
 router
     .route("/logout")
     .post(logoutUser)
+
+router
+    .route("/profile")
+    .get(authenticate, getSpecificProfile)
 
 export default router
