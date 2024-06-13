@@ -37,4 +37,6 @@ router
     .route("/profile")
     .get(authenticate, getSpecificProfile)
     .put(authenticate, updateCurrentUserProfile)
+
+
 export default router
