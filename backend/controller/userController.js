@@ -122,7 +122,8 @@ const getSpecificProfile = asyncHandler(async (req, res) => {
 })
 
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user._id)
+    const user = await User
+                .findById(req.user._id)
 
     if (user) {
         user.username = req.body.username || user.username
@@ -153,11 +154,34 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     }
 })
 
+const deleteUserById = asyncHandler(async (req, res) => {
+    const user = await User
+                .findById(req.params.id)
+
+    if (user) {
+        if (user.isAdmin) {
+            res
+                .status(400)
+            throw new Error ("Cannot delete an admin user")
+        }
+
+        await User.deleteOne({_id: user._id})
+        res
+            .json({message: "User removed"})
+
+    } else {
+        res
+            .status(404)
+        throw new Error("User is not deleted")
+    }
+})
+
 export {
     createUser,
     loginUser,
     logoutUser,
     getAllUsers,
     getSpecificProfile,
-    updateCurrentUserProfile
+    updateCurrentUserProfile,
+    deleteUserById
 }

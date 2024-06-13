@@ -5,7 +5,8 @@ import {
     logoutUser,
     getAllUsers,
     getSpecificProfile,
-    updateCurrentUserProfile
+    updateCurrentUserProfile,
+    deleteUserById
 }
 from '../controller/userController.js'
 
@@ -37,6 +38,12 @@ router
     .route("/profile")
     .get(authenticate, getSpecificProfile)
     .put(authenticate, updateCurrentUserProfile)
+
+
+// Admin Routes
+router
+    .route('/:id')
+    .delete(authenticate, authorizeAdmin, deleteUserById)
 
 
 export default router
