@@ -1,5 +1,5 @@
 import express from 'express'
-import { createUser,loginUser } from '../controller/userController.js'
+import { createUser,loginUser,logoutUser } from '../controller/userController.js'
 const router = express.Router()
 
 
@@ -10,5 +10,9 @@ router
 router
     .route("/auth")
     .post(loginUser)
+
+router
+    .route("/logout")
+    .post(logoutUser)
 
 export default router
