@@ -196,6 +196,29 @@ const getUserById = asyncHandler(async (req, res) => {
     }
 })
 
+// Update a user with the help of ID
+const updateUserById = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id)
+
+    if (user) {
+        user.username = req.body.username || user.username
+        user.email = req.body.email || user.email
+        user.isAdmin = Boolean(req.body.isAdmin)
+
+        const updatedUser = await user.save()
+
+        res.json({
+            _id: updatedUser._id,
+            username: updatedUser.username,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin
+        })
+    } else {
+        res.status(400)
+        throw new Error("User is not found")
+    }
+})
+
 export {
     createUser,
     loginUser,
@@ -204,5 +227,6 @@ export {
     getSpecificProfile,
     updateCurrentUserProfile,
     deleteUserById,
-    getUserById
+    getUserById,
+    updateUserById
 }
