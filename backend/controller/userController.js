@@ -3,7 +3,7 @@ import asyncHandler from '../middlewares/asyncHandler.js'
 import bcrypt from 'bcryptjs'
 import implementToken from '../utils/implementToken.js'
 
-
+// Create a user
 const createUser = asyncHandler(async (req, res) => {
     const {
         username,
@@ -61,6 +61,7 @@ const createUser = asyncHandler(async (req, res) => {
 
 })
 
+// Login 
 const loginUser = asyncHandler(async (req, res) => {
     const {
         email,
@@ -87,6 +88,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
 })
 
+// Logout
 const logoutUser = asyncHandler(async (req, res) => {
     res
         .cookie('jwt', '', {
@@ -99,11 +101,13 @@ const logoutUser = asyncHandler(async (req, res) => {
         .json({ message: "Removed" })
 })
 
+// Get All User
 const getAllUsers = asyncHandler(async (req,res) => {
     const user = await User.find({})
     res.json(user)
 })
 
+// Get the user that has jwt token
 const getSpecificProfile = asyncHandler(async (req, res) => {
     const user = await User
                     .findById(req.user._id)
@@ -121,6 +125,7 @@ const getSpecificProfile = asyncHandler(async (req, res) => {
     }
 })
 
+// Update the user that has jwt token
 const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     const user = await User
                 .findById(req.user._id)
@@ -154,6 +159,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
     }
 })
 
+// Delete a user with the help of ID
 const deleteUserById = asyncHandler(async (req, res) => {
     const user = await User
                 .findById(req.params.id)
@@ -176,6 +182,20 @@ const deleteUserById = asyncHandler(async (req, res) => {
     }
 })
 
+// Get a user with the help of ID
+const getUserById = asyncHandler(async (req, res) => {
+    const user = await User
+        .findById(req.params.id)
+        .select('-password')
+    if (user) {
+        res.json(user)
+    }
+    else {
+        res.status(400)
+        throw new Error("User is not found")
+    }
+})
+
 export {
     createUser,
     loginUser,
@@ -183,5 +203,6 @@ export {
     getAllUsers,
     getSpecificProfile,
     updateCurrentUserProfile,
-    deleteUserById
+    deleteUserById,
+    getUserById
 }
