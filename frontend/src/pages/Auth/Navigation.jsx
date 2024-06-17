@@ -100,7 +100,7 @@ const Navigation = () => {
                                 strokeLinecap='round'
                                 strokeLinejoin='round'
                                 strokeWidth="2"
-                                d={dropdownOpen ? "M5 15l7-7 7 7" : "M19 9Ş-7 7-7-7"}
+                                d={dropdownOpen ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"}
                             />
                         </svg>
 
