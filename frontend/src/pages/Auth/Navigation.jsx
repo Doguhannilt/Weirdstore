@@ -1,13 +1,23 @@
 import React from 'react'
 import { useState } from 'react'
+
 // ICONS
-import { AiOutlineHome, AiOutlineShopping, AiOutlineLogin, AiOutlineUserAdd, AiOutlineShoppingCart } from 'react-icons/ai'
+import {
+    AiOutlineHome,
+    AiOutlineShopping,
+    AiOutlineLogin,
+    AiOutlineUserAdd,
+    AiOutlineShoppingCart
+} from 'react-icons/ai'
 import { FaHeart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 // REDUX
-import { useSelector, useDispatch } from 'react-redux'
+import {
+    useSelector,
+    useDispatch
+} from 'react-redux'
 import { useLoginMutation } from '../../redux/api/usersApiSlice'
 import { logout } from '../../redux/features/auth/authSlice'
 
@@ -45,7 +55,9 @@ const Navigation = () => {
     }
 
     return (
-        <div style={{ zIndex: 999 }} className={`${showSidebar ? "hidden" : 'flex'} xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-white bg-[#000] w-[6%] hover:w-[12%] h-[100vh]  fixed `}>
+        <div
+            style={{ zIndex: 999 }}
+            className={`${showSidebar ? "hidden" : 'flex'} xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-white bg-[#000] w-[6%] hover:w-[12%] h-[100vh]  fixed `}>
 
             <div className="flex flex-col justify-center space-y-4">
                 <Link to='/' className='flex items-center transition-transform tansform hover:translate-x-2'>
@@ -67,24 +79,23 @@ const Navigation = () => {
             </div>
 
             <div className="relative">
-                <button onClick={toggleDropdown} className='flex items-center text-gray-8000 focus:outline-none'>
+                <button
+                    onClick={toggleDropdown}
+                    className='flex items-center text-gray-8000 focus:outline-none'>
+                    
                     {userInfo ? (
                         <span className='text-white font-bold text-xl'>{userInfo.username}</span>
-                    ) :
-                        (
-                            <></>
-                        )}
+                    ) : (<></>)}
 
 
+                        {/* SVG */}
                     {userInfo && (
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className={`h-4 w-4 ml-1 ${dropdownOpen ? "transform rotate-180" : ""
-                                }`}
+                            className={`h-4 w-4 ml-1 ${dropdownOpen ? "transform rotate-180" : ""}`}
                             fill='none'
                             viewBox='0 0 24 24'
-                            stroke='white'
-                        >
+                            stroke='white'>
                             <path
                                 strokeLinecap='round'
                                 strokeLinejoin='round'
@@ -92,6 +103,8 @@ const Navigation = () => {
                                 d={dropdownOpen ? "M5 15l7-7 7 7" : "M19 9Ş-7 7-7-7"}
                             />
                         </svg>
+
+
                     )}
                 </button>
                 {dropdownOpen && userInfo && (
@@ -107,50 +120,54 @@ const Navigation = () => {
                                 {userInfoAdmin.map(() => (
                                     <li>
                                         <Link to={userInfoAdmin.URL}
-                                            className={userInfoAdmin.STYLE}
-                                        >
+                                            className={userInfoAdmin.STYLE}>
                                             {userInfoAdmin.NAME}
                                         </Link>
                                     </li>
                                 ))}
-                            </>
-                        )
-                            : (
+                            </>)
+                            :
+                            (
                                 <>
                                     <li>
-                                        <Link to='/admin/profile' className='block px-4 py-2 hover:bg-gray-200'>Profile</Link>
+                                        <Link to='/admin/profile'
+                                            className='block px-4 py-2 hover:bg-gray-200'>
+                                            Profile
+                                        </Link>
                                     </li>
                                     <li>
                                         <Link to='/'
                                             onClick={logoutHandler}
-                                            className='block px-4 py-2 hover:bg-gray-200'>Logout</Link>
+                                            className='block px-4 py-2 hover:bg-gray-200'>
+                                            Logout
+                                        </Link>
                                     </li>
                                 </>
                             )}
                     </ul>
                 )}
-
-
             </div>
-            {!userInfo && (
 
+            {!userInfo && (
                 <ul>
                     <li>
-                        <Link to='/login' className='flex items-center transition-transform tansform hover:translate-x-2'>
-                            <AiOutlineLogin className='mr-2 mt-[3rem]' size={26} />
-
+                        <Link to='/login'
+                            className='flex items-center transition-transform tansform hover:translate-x-2'>
+                            <AiOutlineLogin
+                                className='mr-2 mt-[3rem]'
+                                size={26} />
                         </Link>
                     </li>
                     <li>
-                        <Link to='/register' className='flex items-center transition-transform tansform hover:translate-x-2'>
-                            <AiOutlineUserAdd className='mr-2 mt-[3rem]' size={26} />
-
+                        <Link to='/register'
+                            className='flex items-center transition-transform tansform hover:translate-x-2'>
+                            <AiOutlineUserAdd
+                                className='mr-2 mt-[3rem]'
+                                size={26} />
                         </Link>
                     </li>
                 </ul>
             )}
-
-
         </div>
     )
 }
