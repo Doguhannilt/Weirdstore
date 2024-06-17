@@ -18,7 +18,7 @@ import {
     useSelector,
     useDispatch
 } from 'react-redux'
-import { useLoginMutation } from '../../redux/api/usersApiSlice'
+import { useLogoutMutation } from '../../redux/api/usersApiSlice'
 import { logout } from '../../redux/features/auth/authSlice'
 
 // Config
@@ -42,7 +42,7 @@ const Navigation = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [logoutApiCall] = useLoginMutation()
+    const [logoutApiCall] = useLogoutMutation()
 
     const logoutHandler = async () => {
         try {
@@ -112,18 +112,18 @@ const Navigation = () => {
                         {userInfo && userInfo.isAdmin ? (
                             <>
                                 <li>
-                                    <Link to='/admin/logout'
+                                    <Link to='/login'
                                         onClick={logoutHandler}
-                                        className='block px-4 ml-10 hover:bg-gray-200'>Logout</Link>
+                                        className='block px-4 hover:bg-gray-200'>Logout</Link>
                                 </li>
 
-                                {userInfoAdmin.map(() => (
-                                    <li>
-                                        <Link to={userInfoAdmin.URL}
-                                            className={userInfoAdmin.STYLE}>
-                                            {userInfoAdmin.NAME}
-                                        </Link>
-                                    </li>
+                                {userInfoAdmin.map((item) => (
+                    <li key={item.URL}>
+                        <Link to={item.URL}
+                              className={item.STYLE}>
+                            {item.NAME}
+                        </Link>
+                    </li>
                                 ))}
                             </>)
                             :
