@@ -37,7 +37,7 @@ const Login = () => {
         try {
             const res = await login({ email, password }).unwrap();
             console.log(res);
-            dispatch(setCredentials({ ...res })); // Corrected the spelling here
+            dispatch(setCredentials({ ...res })); 
         } catch (err) {
             toast.error(err?.data?.message || err.message);
         }
@@ -48,7 +48,7 @@ const Login = () => {
         <div>
             <section className='pl-[10rem] flex flex-wrap'>
                 <div className="mr-[4rem] mt-[5rem]">
-                    <h1 className="text-2xl font mb-10">Login</h1>
+                    <h1 className="text-4xl font mb-10">Login</h1>
 
                     <form onSubmit={submitHandler} className='w-[40rem]'>
                         <div>
@@ -57,12 +57,13 @@ const Login = () => {
                             <input
                                 type="email"
                                 id="email"
+                                autoFocus
                                 className='mt-1 p-2 borde rounded w-full'
                                 value={email}
                                 onChange={e => setEmail(e.target.value)} />
                         </div>
                         <div>
-                            <label htmlFor='email' className='block text-sm font-medium text-white'>Password</label>
+                            <label htmlFor='email' className='block mt-4 text-sm font-medium text-white'>Password</label>
 
                             <input
                                 type="password"
@@ -82,7 +83,7 @@ const Login = () => {
                         <div className="mt-4">
                             <p className="text-white">
                                 New Customer ? {" "}
-                                <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link>
+                                <Link to={redirect ? `/register?redirect=${redirect}` : '/register'} className='text-pink-700'>Register</Link>
                             </p>
                         </div>
                     </form>
