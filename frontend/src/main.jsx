@@ -8,14 +8,24 @@ import { createBrowserRouter } from 'react-router-dom'
 // PAGES
 import Login from './pages/Auth/Login.jsx'
 import Register from './pages/Auth/Register.jsx'
+import Profile from './pages/User/Profile.jsx'
 
 //REDUX
 import { Provider } from 'react-redux'
 import store from './redux/store.js'
 
+// PROTECTED ROUTE
+import ProtectedRoute from './components/ProtectedRoute.jsx'
+
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />} >
+
+      <Route path='' element={<ProtectedRoute />} >
+        <Route path="/profile" element={<Profile />} />
+      </Route>
+
       <Route path='login' element={<Login />} />
       <Route path='register' element={<Register />} />
     </Route>
