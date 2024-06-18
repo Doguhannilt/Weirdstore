@@ -28,6 +28,41 @@ const UserList = () => {
         refetch()
     }, [refetch])
 
+
+    const deleteHandler = async (id) => {
+        if (window.confirm('Are you Sure?')) {
+            try {
+                await deleteUser(id)
+             
+            } catch (err) {
+                toast.error(err.data.message || err.error)
+            }
+        }
+    }
+
+    const toggleEdit = (id, username, email) => {
+        setEditableUserId(id)
+        setEditableUserName(username)
+        setEditableUserEmail(email)
+    }
+
+    const updateHandler = async (id) => {
+        try {
+            await updateUser({
+                userId: id,
+                username: editableUserName,
+                email: editableUserEmail
+            })
+
+            setEditableUserId(null)
+       
+        
+
+        } catch (err) {
+            toast.error(err.data.message | err.error)
+        }
+    }
+ 
   return (
       <div className="p-4">
           {isLoading ? 'Loading' : error ? (<Message variant='danger'>{error?.data.message || error}</Message>):(
@@ -50,8 +85,8 @@ const UserList = () => {
                                   <td className="px-4 py-2">
                                       {editableUserId === user._id ? (
                                           <div className="items-center">
-                                              <input type="text" value={editableUserName} onChange={e => setEditableUserName(e.target.value)} className="w-full p-2 border rounded-lg" />
-                                              <button onClick={() => updateHandler(user._id)} className="ml-2 bg-blue-500 text-white py-2 px-4 rounded-lg">
+                                              <input type="text" value={editableUserName} onChange={e => setEditableUserName(e.target.value)} className="border rounded-lg" />
+                                              <button onClick={() => updateHandler(user._id)} className="ml-2 bg-blue-500 text-white py-2 px-2 rounded-lg">
                                                   <FaCheck/>
                                           </button>
                                           </div>
@@ -70,12 +105,12 @@ const UserList = () => {
                                               <input
                                                   type="text"
                                                   value={editableUserEmail}
-                                                  onChange={setEditableUserEmail(e.target.value)}
-                                                  className="w-full p-2 border rounded-lg"
+                                                  onChange={(e) => setEditableUserEmail(e.target.value)}
+                                                  className=" m-2 border rounded-lg"
                                                   
                                               />
-                                              <button onChange ={() => updateHandler(user._id)} className="ml-2 bg-blue-500 text-white py-2 px-4 rounded-lg">
-                                                <FaCheck/>
+                                              <button onChange={() => updateHandler(user._id)} className="ml-2 bg-blue-500 text-white py-2 px-2 rounded-lg">
+                                                <FaCheck />
                                               </button>
                                       </div>
                                       ) : (
