@@ -25,6 +25,23 @@ const Profile = () => {
     const dispatch = useDispatch()
 
 
+    const submitHandler = async (e) => {
+        e.preventDefault()
+
+        if (password !== confirmPassword) {
+            toast.error('Pass do not match')
+        }
+        else {
+            try {
+                const res = await updateProfile({ _id: userInfo._id, username, email, password }).unwrap()
+                dispatch(setCredentials({ ...res }))
+                toast.success('Profile Updated Successfully')
+            } catch (err) {
+                toast.error(err?.data?.message || err.message)
+            }
+        }
+    }
+
     return (
     <div>
             <div className="container mx-auto p-4">
