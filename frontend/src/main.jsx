@@ -9,6 +9,8 @@ import { createBrowserRouter } from 'react-router-dom'
 import Login from './pages/Auth/Login.jsx'
 import Register from './pages/Auth/Register.jsx'
 import Profile from './pages/User/Profile.jsx'
+import AdminRoute from './pages/Admin/AdminRoute.jsx'
+import userList from './pages/Admin/userList.jsx'
 
 //REDUX
 import { Provider } from 'react-redux'
@@ -22,12 +24,18 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />} >
 
+      <Route path='login' element={<Login />} />
+      <Route path='register' element={<Register />} />
+
       <Route path='' element={<ProtectedRoute />} >
         <Route path="/profile" element={<Profile />} />
       </Route>
 
-      <Route path='login' element={<Login />} />
-      <Route path='register' element={<Register />} />
+      {/* Admin */}
+      <Route path='/admin' element={<AdminRoute/>}>
+        <Route path='userlist' element={<userList />} />  
+      </Route>
+      
     </Route>
     
     
