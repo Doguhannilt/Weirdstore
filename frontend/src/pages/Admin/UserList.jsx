@@ -34,8 +34,8 @@ const UserList = () => {
             try {
                 await deleteUser(id)
              
-            } catch (err) {
-                toast.error(err.data.message || err.error)
+            } catch (error) {
+                toast.error(error.data.message || error.error)
             }
         }
     }
@@ -58,8 +58,8 @@ const UserList = () => {
        
         
 
-        } catch (err) {
-            toast.error(err.data.message | err.error)
+        } catch (error) {
+            toast.error(error.data.message | error.error)
         }
     }
  

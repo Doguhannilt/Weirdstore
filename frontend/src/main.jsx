@@ -10,7 +10,7 @@ import Login from './pages/Auth/Login.jsx'
 import Register from './pages/Auth/Register.jsx'
 import Profile from './pages/User/Profile.jsx'
 import AdminRoute from './pages/Admin/AdminRoute.jsx'
-import userList from './pages/Admin/userList.jsx'
+import UserList from './pages/Admin/UserList.jsx'
 
 //REDUX
 import { Provider } from 'react-redux'
@@ -33,7 +33,7 @@ const router = createBrowserRouter(
 
       {/* Admin */}
       <Route path='/admin' element={<AdminRoute/>}>
-        <Route path='userlist' element={<userList />} />  
+        <Route path='userlist' element={<UserList />} />  
       </Route>
       
     </Route>
