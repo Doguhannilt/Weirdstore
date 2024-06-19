@@ -54,3 +54,7 @@
 - **tailwindcss**: ^3.4.4
 - **vite**: ^5.2.0
 </details>
+
+-> Note: 19 June 2024 Docker Added 
+<a href = "https://hub.docker.com/r/doguhannilt/weirdstore-frontend" > Frontend Docker</a> | 
+<a href ="https://hub.docker.com/r/doguhannilt/weirdstore-backend"> Backend Docker </a>
