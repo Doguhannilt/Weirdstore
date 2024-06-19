@@ -1,5 +1,10 @@
 FROM node:alpine
+
+# Çalışma dizinini /app olarak ayarlayın
 WORKDIR /app
+
+# Geri kalan dosyaları /app dizinine kopyalayın
 COPY . .
-WORKDIR /app/src
+
+# Uygulamayı çalıştırın
 CMD ["node", "index.js"]
