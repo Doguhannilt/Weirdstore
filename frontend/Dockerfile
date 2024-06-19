@@ -1,16 +1,14 @@
-# frontend/Dockerfile
+# Node.js tabanlı Alpine imajını kullan
 FROM node:alpine
 
+# Çalışma dizinini /app olarak ayarla ve oluştur
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application
+# Geri kalan dosyaları /app dizinine kopyala
 COPY . .
 
-# Run the development server
-CMD ["npm", "run", "dev"]
+# Eğer package.json varsa, bağımlılıkları yükle
+RUN if [ -f package.json ]; then npm install; fi
+
+# Uygulamayı çalıştır
+CMD ["node", "index.js"]
