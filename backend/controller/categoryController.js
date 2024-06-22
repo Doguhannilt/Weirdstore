@@ -51,7 +51,7 @@ const getAllCategory = asyncHandler(async (req, res) => {
 })
 
 const getCategoryById = asyncHandler(async (req, res) => {
-    const categoryId = req.params.categoryId; 
+    const categoryId = req.params.id; 
     try {
         const findCategory = await Category.findById(categoryId);
         res.json(
@@ -72,10 +72,21 @@ const DeleteById = asyncHandler(async (req, res) => {
     }
 }) 
 
+const listCategory = asyncHandler(async (req, res) => {
+    try {
+        const all = await Category.find({})
+        res.json(all)
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json(error.message)
+    }
+})
+
 export {
     createCategory,
     updateCategory,
     getAllCategory,
-    getCategoryById,
-    DeleteById
+    getCategoryById, 
+    DeleteById,
+    listCategory
 }
