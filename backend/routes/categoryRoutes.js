@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
 import {authenticate, authorizeAdmin} from '../middlewares/authMidd.js'
-import { createCategory } from '../controller/categoryController.js'
+import { createCategory, updateCategory } from '../controller/categoryController.js'
 
 
 router
@@ -10,6 +10,13 @@ router
         authenticate,
         authorizeAdmin,
         createCategory)
+
+router
+    .route('/:categoryId')
+    .put(
+        authenticate,
+        authorizeAdmin,
+        updateCategory)
 
 
 export default router 
