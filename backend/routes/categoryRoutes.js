@@ -44,7 +44,7 @@ router
     .get(listCategory)
 
 router
-    // Get Specific category but different url http://localhost:5000/api/category/categories/:id
+    // Get Specific category but different url http://localhost:5000/api/category/:id
     .route("/:id")
     .get(
         authenticate,
