@@ -45,7 +45,37 @@ const updateCategory = asyncHandler(async (req, res) => {
     }
 })
 
+const getAllCategory = asyncHandler(async (req, res) => {
+     const getAll = await Category.find({})
+     res.json(getAll)
+})
+
+const getCategoryById = asyncHandler(async (req, res) => {
+    const categoryId = req.params.categoryId; 
+    try {
+        const findCategory = await Category.findById(categoryId);
+        res.json(
+            findCategory
+        );
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "An error occurred" }); 
+    }
+});
+
+const DeleteById = asyncHandler(async (req, res) => {
+    try {
+        const removed = await Category.findByIdAndDelete(req.params.categoryId)
+        res.json(removed)
+    } catch (error) {
+        console.log(error)
+    }
+}) 
+
 export {
     createCategory,
-    updateCategory
+    updateCategory,
+    getAllCategory,
+    getCategoryById,
+    DeleteById
 }
