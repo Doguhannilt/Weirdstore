@@ -8,13 +8,17 @@ from '../middlewares/authMidd.js'
 import checkId from "../middlewares/checkId.js";
 
 // Controller
-import { addProduct } from "../controller/productController.js";
+import { addProduct, updateProductDetails } from "../controller/productController.js";
 
 const router = express.Router()
 
 router
     .route("/")
-    .post(authenticate, authorizeAdmin, formidable() ,addProduct)
+    .post(authenticate, authorizeAdmin, formidable(), addProduct)
+
+router
+    .route("/:id")
+    .put(authenticate, authorizeAdmin, formidable(), updateProductDetails)
 
 
 
