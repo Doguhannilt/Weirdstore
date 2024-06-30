@@ -144,9 +144,26 @@ const fetchProducts = asyncHandler(async (req, res) => {
     }
 })
 
+const fetchProductById = asyncHandler(async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id)
+        if (product) {
+            return res.json(product)
+        } else {
+            res.status(404)
+            throw new Error('Product not found') 
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(404).json(error.message)
+    }
+})
+
+
 export {
     addProduct,
     updateProductDetails,
     removeProducts,
-    fetchProducts
+    fetchProducts,
+    fetchProductById
 }

@@ -12,7 +12,8 @@ import {
     addProduct,
     updateProductDetails,
     removeProducts,
-    fetchProducts
+    fetchProducts,
+    fetchProductById
 } from "../controller/productController.js";
 
 const router = express.Router()
@@ -38,7 +39,9 @@ router
         authenticate,
         authorizeAdmin,
         removeProducts)
-
+    .get(
+        fetchProductById
+    )
 
 
 
