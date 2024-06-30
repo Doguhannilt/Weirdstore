@@ -159,11 +159,21 @@ const fetchProductById = asyncHandler(async (req, res) => {
     }
 })
 
+const fetchAllProducts = asyncHandler(async(req, res) => {
+    try {
+        const products = await Product.find({}).populate('category').limit(12).sort({ createdAt: -1 });
+        res.json(products) 
+    } catch (error) {
+        console.log(error)
+    }
+ 
+})
 
 export {
     addProduct,
     updateProductDetails,
     removeProducts,
     fetchProducts,
-    fetchProductById
+    fetchProductById,
+    fetchAllProducts
 }

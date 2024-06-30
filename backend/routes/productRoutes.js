@@ -13,11 +13,12 @@ import {
     updateProductDetails,
     removeProducts,
     fetchProducts,
-    fetchProductById
+    fetchProductById,
+    fetchAllProducts
 } from "../controller/productController.js";
 
 const router = express.Router()
-
+ 
 router
     .route("/")
     .post(
@@ -27,6 +28,11 @@ router
         addProduct)
     .get(
         fetchProducts
+)
+router
+    .route("/allproduct")
+    .get(
+        fetchAllProducts
     )
 router
     .route("/:id")
@@ -42,12 +48,6 @@ router
     .get(
         fetchProductById
     )
-
-
-
-
-
-
 
 
 
