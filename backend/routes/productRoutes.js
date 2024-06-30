@@ -2,13 +2,13 @@ import express from "express";
 import formidable from 'express-formidable'
 import {
     authenticate,
-    authorizeAdmin
+    authorizeAdmin,
 }
 from '../middlewares/authMidd.js'
 import checkId from "../middlewares/checkId.js";
 
 // Controller
-import { addProduct, updateProductDetails } from "../controller/productController.js";
+import { addProduct, updateProductDetails, removeProducts } from "../controller/productController.js";
 
 const router = express.Router()
 
@@ -19,6 +19,7 @@ router
 router
     .route("/:id")
     .put(authenticate, authorizeAdmin, formidable(), updateProductDetails)
+    .delete(authenticate, authorizeAdmin, removeProducts)
 
 
 

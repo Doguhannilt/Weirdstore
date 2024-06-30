@@ -101,14 +101,27 @@ const updateProductDetails = asyncHandler(async (req, res) => {
         
         await product.save()
         res.json(product)
-        
+
     } catch (error) {
         console.log(error)
         res.status(400).json(error.message)
     }
 })
 
+const removeProducts = asyncHandler(async (req, res) => {
+    try {
+        
+        const product = await Product.findByIdAndDelete(req.params.id)
+        res.json(product)
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json(error.message)
+    }
+})
+
 export {
     addProduct,
-    updateProductDetails
+    updateProductDetails,
+    removeProducts
 }
