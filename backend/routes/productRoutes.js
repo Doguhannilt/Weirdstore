@@ -15,7 +15,9 @@ import {
     fetchProducts,
     fetchProductById,
     fetchAllProducts,
-    addProductReview
+    addProductReview,
+    fetchTopProducts,
+    fetchNewProducts
 } from "../controller/productController.js";
 
 const router = express.Router()
@@ -30,11 +32,13 @@ router
     .get(
         fetchProducts
 )
+
 router
     .route("/allproduct")
     .get(
         fetchAllProducts
-    )
+)
+    
 router
     .route("/:id")
     .put(
@@ -47,13 +51,18 @@ router
         authorizeAdmin,
         removeProducts)
     .get(
-        fetchProductById
-    )
+        fetchProductById)
+        
+router
+    .route("/top")
+    .get(fetchTopProducts)
+
 router
     .route('/:id/reviews')
-    .post(authenticate, authorizeAdmin, addProductReview)
+    .post(authenticate, authorizeAdmin,checkId, addProductReview)
 
+router
+    .route('/new')
+    .get(fetchNewProducts)
 
-
-
-export default router
+export default router 
