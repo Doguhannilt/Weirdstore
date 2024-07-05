@@ -1,12 +1,12 @@
 import express from "express";
 import formidable from 'express-formidable'
+import checkId from "../middlewares/checkId.js";
+
 import {
     authenticate,
     authorizeAdmin,
 }
 from '../middlewares/authMidd.js'
-import checkId from "../middlewares/checkId.js";
-
 // Controller
 import {
     addProduct,
@@ -14,7 +14,8 @@ import {
     removeProducts,
     fetchProducts,
     fetchProductById,
-    fetchAllProducts
+    fetchAllProducts,
+    addProductReview
 } from "../controller/productController.js";
 
 const router = express.Router()
@@ -48,9 +49,9 @@ router
     .get(
         fetchProductById
     )
-
-
-
+router
+    .route('/:id/reviews')
+    .post(authenticate, authorizeAdmin, addProductReview)
 
 
 
