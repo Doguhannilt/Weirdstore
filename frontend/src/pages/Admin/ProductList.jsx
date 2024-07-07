@@ -6,6 +6,7 @@ import {
 } from '../../redux/api/productApiSlice';
 import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
+import AdminMenu from "./AdminMenu";
 
 const ProductList = () => {
     
@@ -81,6 +82,8 @@ const ProductList = () => {
     return (
         <div className="container mx-auto px-4 sm:px-6 xl:px-8">
             <div className="flex flex-col md:flex-row">
+
+                <AdminMenu />
                 {/* Left Section */}
                 <div className="md:w-3/4 p-3">
                     <div className="mb-4 text-xl font-bold">Create Product</div>
