@@ -13,6 +13,8 @@ import AdminRoute from './pages/Admin/AdminRoute.jsx'
 import CategoryList from './pages/Admin/CategoryList.jsx'
 import ProductList from './pages/Admin/ProductList.jsx'
 import UserList from './pages/Admin/UserList.jsx'
+import ProductUpdate from './pages/Admin/ProductUpdate.jsx'
+import AllProducts from './pages/Admin/AllProducts.jsx'
 
 //REDUX
 import { Provider } from 'react-redux'
@@ -20,6 +22,7 @@ import store from './redux/store.js'
 
 // PROTECTED ROUTE 
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+
 
 
 
@@ -38,7 +41,9 @@ const router = createBrowserRouter(
       <Route path='/admin' element={<AdminRoute/>}>
         <Route path='userlist' element={<UserList />} />  
         <Route path='categorylist' element={<CategoryList />} />
-        <Route path='productlist'  element={<ProductList/>} />
+        <Route path='productlist/:pageNumber' element={<ProductList />} />
+        <Route path='allproducts' element={<AllProducts />} />
+        <Route path ='product/update/:_id' element= {<ProductUpdate/>} />
       </Route>
       
     </Route>
