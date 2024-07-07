@@ -11,15 +11,16 @@ import Register from './pages/Auth/Register.jsx'
 import Profile from './pages/User/Profile.jsx'
 import AdminRoute from './pages/Admin/AdminRoute.jsx'
 import CategoryList from './pages/Admin/CategoryList.jsx'
+import ProductList from './pages/Admin/ProductList.jsx'
+import UserList from './pages/Admin/UserList.jsx'
 
 //REDUX
 import { Provider } from 'react-redux'
 import store from './redux/store.js'
 
-// PROTECTED ROUTE
+// PROTECTED ROUTE 
 import ProtectedRoute from './components/ProtectedRoute.jsx'
-import ProductList from './pages/Admin/ProductList.jsx'
-import UserList from './pages/Admin/UserList.jsx'
+
 
 
 const router = createBrowserRouter(
