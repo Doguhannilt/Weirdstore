@@ -12,6 +12,7 @@ import {
     useUpdateUserMutation
 } from '../../redux/api/usersApiSlice'
 import Message from "../../components/Message"
+import AdminMenu from "./AdminMenu"
 
 
 
@@ -67,7 +68,8 @@ const UserList = () => {
       <div className="p-4">
           {isLoading ? 'Loading' : error ? (<Message variant='danger'>{error?.data.message || error}</Message>):(
             <div className="flex flex-col md:flex-row">
-                { /* Admin Menu */}
+                  { /* Admin Menu */}
+                  <AdminMenu />
 
                   <div className="table w-full md:w-4/5 mx-auto">
                       <thead>
