@@ -10,7 +10,6 @@ import Login from './pages/Auth/Login.jsx'
 import Register from './pages/Auth/Register.jsx'
 import Profile from './pages/User/Profile.jsx'
 import AdminRoute from './pages/Admin/AdminRoute.jsx'
-import UserList from './pages/Admin/UserList.jsx'
 import CategoryList from './pages/Admin/CategoryList.jsx'
 
 //REDUX
@@ -19,6 +18,8 @@ import store from './redux/store.js'
 
 // PROTECTED ROUTE
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+import ProductList from './pages/Admin/ProductList.jsx'
+import UserList from './pages/Admin/UserList.jsx'
 
 
 const router = createBrowserRouter(
@@ -35,7 +36,8 @@ const router = createBrowserRouter(
       {/* Admin */}
       <Route path='/admin' element={<AdminRoute/>}>
         <Route path='userlist' element={<UserList />} />  
-        <Route path='categorylist' element={<CategoryList/>} />
+        <Route path='categorylist' element={<CategoryList />} />
+        <Route path='productlist'  element={<ProductList/>} />
       </Route>
       
     </Route>
