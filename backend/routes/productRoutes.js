@@ -36,8 +36,7 @@ router
 router
     .route("/allproduct")
     .get(
-        fetchAllProducts
-)
+        fetchAllProducts)
     
 router
     .route("/:id")
