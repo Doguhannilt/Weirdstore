@@ -21,6 +21,7 @@ import ProductUpdate from './pages/Admin/ProductUpdate.jsx'
 import AllProducts from './pages/Admin/AllProducts.jsx'
 import Home from './Home.jsx'
 import Favorites from './pages/Products/Favorites.jsx'
+import ProductDetails from './pages/Products/ProductDetails.jsx'
 
 
 //REDUX
@@ -34,7 +35,8 @@ const router = createBrowserRouter(
       <Route index={true} path='/' element={<Home />} />
       <Route path='login' element={<Login />} />
       <Route path='register' element={<Register />} />
-      <Route path='/favorite' element={<Favorites />}
+      <Route path='/favorite' element={<Favorites />} />
+      <Route path='/products/:id' element={<ProductDetails />} 
       />
 
       <Route path='' element={<ProtectedRoute />} >
