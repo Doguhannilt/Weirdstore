@@ -31,11 +31,11 @@ const Home = () => {
                                     <div className="p-4">
                                         <Link to={`/products/${product._id}`} className="block">
                                             <h2 className="text-lg font-bold mb-2">{product.name}</h2>
-                                            </Link>
-                                            <div className="flex items-center justify-between">
-                                                <span className="text-gray-700">${product.price}</span>
-                                                <HeartIcon product={product} />
-                                            </div>
+                                        </Link>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-gray-700">${product.price}</span>
+                                            <HeartIcon product={product} />
+                                        </div>
                                     </div>
                                 </div>
                             ))}

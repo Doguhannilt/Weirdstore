@@ -23,6 +23,7 @@ import { logout } from '../../redux/features/auth/authSlice'
 
 // Config
 import { userInfoAdmin } from '../../utils/config'
+import FavoriteCount from '../Products/FavoriteCount'
 
 const Navigation = () => {
     const { userInfo } = useSelector(state => state.auth)
@@ -75,6 +76,7 @@ const Navigation = () => {
                 <Link to='/favorite' className='flex items-center transition-transform tansform hover:translate-x-2 '>
                     <FaHeart className='mr-2 mt-[3rem]' size={26} />
                     <span className='mt-12'>Favs</span>
+                    <FavoriteCount />
                 </Link>
             </div>
 
