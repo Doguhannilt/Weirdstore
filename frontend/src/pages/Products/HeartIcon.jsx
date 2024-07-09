@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addToFavorites, removeFromFavorites, setFavorites } from '../../redux/features/favorites/favoritesSlice';
 import { addFavoriteToLocalStorage, getFavoritesFromLocalStorage, removeFavoriteFromLocalStorage } from '../../utils/localStorage';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 
 const HeartIcon = ({ product }) => {
@@ -23,9 +24,11 @@ const HeartIcon = ({ product }) => {
         if (isCurrentlyFavorite) {
             dispatch(removeFromFavorites(product));
             removeFavoriteFromLocalStorage(product._id);
+            toast.success('This product is removed')
         } else {
             dispatch(addToFavorites(product));
             addFavoriteToLocalStorage(product);
+            toast.success('This product is added to your favorites')
         }
         
         setIsFavorite(!isCurrentlyFavorite);
