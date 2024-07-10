@@ -19,14 +19,15 @@ import ProductList from './pages/Admin/ProductList.jsx'
 import UserList from './pages/Admin/UserList.jsx'
 import ProductUpdate from './pages/Admin/ProductUpdate.jsx'
 import AllProducts from './pages/Admin/AllProducts.jsx'
-import Home from './Home.jsx'
 import Favorites from './pages/Products/Favorites.jsx'
 import ProductDetails from './pages/Products/ProductDetails.jsx'
-
+import Home from './pages/Home.jsx'
+import Cart from './pages/Cart/Cart.jsx'
 
 //REDUX
 import { Provider } from 'react-redux'
 import store from './redux/store.js'
+
 
 
 const router = createBrowserRouter(
@@ -36,7 +37,8 @@ const router = createBrowserRouter(
       <Route path='login' element={<Login />} />
       <Route path='register' element={<Register />} />
       <Route path='/favorite' element={<Favorites />} />
-      <Route path='/products/:id' element={<ProductDetails />} 
+      <Route path='/products/:id' element={<ProductDetails />} />
+      <Route path='cart' element={<Cart />} 
       />
 
       <Route path='' element={<ProtectedRoute />} >
