@@ -97,10 +97,21 @@ const getUsersOrders = async (req, res) => {
   }
 }
 
+const countTotalOrders = async (req, res) => {
+  try {
+    const totalOrders = await Order.countDocuments()
+    res.json({totalOrders})
+  } catch (error) {
+    res.status(500).json({error: error.message})
+  }
+}
+
+
 export {
   createOrder,
   getAllOrders,
-  getUsersOrders
+  getUsersOrders,
+  countTotalOrders
 }
 
 

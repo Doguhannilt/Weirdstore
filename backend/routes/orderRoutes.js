@@ -7,7 +7,8 @@ import { authenticate, authorizeAdmin } from '../middlewares/authMidd.js'
 import {
     createOrder,
     getAllOrders,
-    getUsersOrders
+    getUsersOrders,
+    countTotalOrders
 } from "../controller/orderController.js";
 
 const router = express.Router()
@@ -20,5 +21,9 @@ router
 router
     .route('/mine')
     .get(authenticate, getUsersOrders)
+
+router
+    .route('/total-orders')
+    .get(countTotalOrders)
 
 export default router
