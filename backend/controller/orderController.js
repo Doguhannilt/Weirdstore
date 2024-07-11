@@ -88,10 +88,19 @@ const getAllOrders = async (req, res) => {
     }
 }
 
+const getUsersOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({ user: req.user._id })
+    res.json(orders)
+  } catch (error) {
+    res.status(500).json({error: error.message})
+  }
+}
 
 export {
   createOrder,
-  getAllOrders
+  getAllOrders,
+  getUsersOrders
 }
 
 

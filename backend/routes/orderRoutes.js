@@ -6,7 +6,8 @@ import { authenticate, authorizeAdmin } from '../middlewares/authMidd.js'
 // orderController.js
 import {
     createOrder,
-    getAllOrders
+    getAllOrders,
+    getUsersOrders
 } from "../controller/orderController.js";
 
 const router = express.Router()
@@ -16,6 +17,8 @@ router
     .post(authenticate, createOrder)
     .get(authenticate, authorizeAdmin, getAllOrders)
 
-
+router
+    .route('/mine')
+    .get(authenticate, getUsersOrders)
 
 export default router
