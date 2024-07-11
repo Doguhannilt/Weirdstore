@@ -44,7 +44,7 @@ const HeartIcon = ({ product }) => {
             ) : (
                 <FaRegHeart
                     onClick={toggleFavorites}
-                    className='text-white'
+                    className='text-purple-900'
                 />
             )}
         </div>
