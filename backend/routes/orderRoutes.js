@@ -8,7 +8,8 @@ import {
     createOrder,
     getAllOrders,
     getUsersOrders,
-    countTotalOrders
+    countTotalOrders,
+    calculateTotalSales
 } from "../controller/orderController.js";
 
 const router = express.Router()
@@ -25,5 +26,9 @@ router
 router
     .route('/total-orders')
     .get(countTotalOrders)
+
+router
+    .route('/total-sales')
+    .get(calculateTotalSales)
 
 export default router
