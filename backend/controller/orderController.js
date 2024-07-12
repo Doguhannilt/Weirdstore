@@ -80,12 +80,12 @@ const createOrder = async (req, res) => {
 };
 
 const getAllOrders = async (req, res) => {
-    try {
-      const orders = await Order.find({}).populate('user', "id username")
-      res.json(orders)
-    } catch (error) {
-      res.status(500).json({error: error.message})
-    }
+  try {
+    const orders = await Order.find({}).populate('user', "id username")
+    res.json(orders)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
+  }
 }
 
 const getUsersOrders = async (req, res) => {
@@ -93,7 +93,7 @@ const getUsersOrders = async (req, res) => {
     const orders = await Order.find({ user: req.user._id })
     res.json(orders)
   } catch (error) {
-    res.status(500).json({error: error.message})
+    res.status(500).json({ error: error.message })
   }
 }
 
@@ -102,7 +102,7 @@ const countTotalOrders = async (req, res) => {
     const totalOrders = await Order.countDocuments()
     res.json({ totalOrders })
   } catch (error) {
-    res.status(500).json({error: error.message})
+    res.status(500).json({ error: error.message })
   }
 }
 
@@ -110,9 +110,33 @@ const calculateTotalSales = async (req, res) => {
   try {
     const orders = await Order.find()
     const totalSales = orders.reduce((sum, order) => sum + order.totalPrice, 0)
-    res.json({totalSales})
+    res.json({ totalSales })
   } catch (error) {
-    res.status(500).json({error : error.message})
+    res.status(500).json({ error: error.message })
+  }
+}
+
+const calculateTotalSalesByDate = async (req, res) => {
+  try {
+    const salesByDate = await Order.aggregate([
+      {
+        $match: {
+          isPaid: true
+        },
+      },
+      {
+        $group: {
+          _id: {
+            $dateToString: { format: '%Y-%m-%d', date: '$paidAt' },
+          },
+          totalSales: { $sum: 'totalPrice' } 
+        }
+      }
+    ])
+
+    res.json(salesByDate)
+  } catch (error) {
+    res.status(500).json({ error: error.message })
   }
 }
 
@@ -122,7 +146,8 @@ export {
   getAllOrders,
   getUsersOrders,
   countTotalOrders,
-  calculateTotalSales
+  calculateTotalSales,
+  calculateTotalSalesByDate
 }
 
 
