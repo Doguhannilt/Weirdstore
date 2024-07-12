@@ -11,7 +11,8 @@ import {
     countTotalOrders,
     calculateTotalSales,
     calculateTotalSalesByDate,
-    findOrderById
+    findOrderById,
+    markOrderAsPaid
 } from "../controller/orderController.js";
 
 const router = express.Router()
@@ -38,5 +39,8 @@ router
 router
     .route('/:id')
     .get(authenticate, findOrderById)
+router
+    .route('/:id/pay')
+    .put(authenticate, markOrderAsPaid)
 
 export default router
