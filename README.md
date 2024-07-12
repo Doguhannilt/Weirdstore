@@ -11,7 +11,9 @@ Welcome to **weirdstore**, your one-stop solution for managing your store with a
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [Postman Collection](#postman-collection)
 - [License](#license)
+
 
 ## Introduction
 
@@ -44,6 +46,13 @@ Redux Toolkit (RTK) is used in **weirdstore** for the following reasons:
 - **Improved Performance**: RTK provides performance optimizations out of the box.
 - **Enhanced Readability**: RTK improves code readability and maintainability.
 - **Integrated Best Practices**: RTK includes best practices for using Redux, making it easier to write robust and scalable code.
+
+## Postman Collection
+
+Easily test and interact with the weirdstore API using Postman. Click the button below to fork the collection and get started:
+
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://god.gw.postman.com/run-collection/32076392-c2bb60b5-db1f-464b-9ee0-e386164df1e6?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D32076392-c2bb60b5-db1f-464b-9ee0-e386164df1e6%26entityType%3Dcollection%26workspaceId%3D128c2550-0e68-4bdd-81e6-035db378af3f)
+
 
 ## Installation
 
