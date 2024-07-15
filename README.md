@@ -25,7 +25,6 @@ Welcome to **weirdstore**, your one-stop solution for managing your store with a
 - **Inventory Management**: Keep track of your stock with ease.
 - **Sales Tracking**: Monitor your sales and performance.
 - **Customer Management**: Manage customer information and interactions.
-- **Reports and Analytics**: Generate detailed reports to gain insights into your business.
 - **Customizable Settings**: Tailor the system to meet your specific needs.
 - **Security**: Robust security measures to protect your data.
 
