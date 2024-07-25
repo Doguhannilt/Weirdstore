@@ -11,3 +11,4 @@ services:
       - .env  
     environment:
       NODE_ENV: development
+      MONGO_URI: mongodb://mongo:27017/dogu
