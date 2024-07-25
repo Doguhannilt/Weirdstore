@@ -23,7 +23,7 @@ jobs:
       working-directory: ./backend  # Backend dizininde bağımlılıkları yükleyin
 
     - name: Build Docker image
-      run: docker build -t weirdstore-backend ./backend
+      run: docker build -t doguhannilt/weirdstore-backend ./backend
 
 
     - name: Log in to Docker Hub
@@ -33,6 +33,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push Docker image to Docker Hub
-      run: docker push weirdstore-backend
+      run: docker push doguhannilt/weirdstore-backend
+
       
 
