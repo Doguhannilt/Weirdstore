@@ -1,10 +1,20 @@
-FROM node:alpine
+FROM node:18-alpine
 
-# Çalışma dizinini /app olarak ayarlayın
+# Çalışma dizinini /app olarak ayarla
 WORKDIR /app
 
-# Geri kalan dosyaları /app dizinine kopyalayın
+# package.json ve package-lock.json dosyalarını kopyala
+COPY package.json ./
+COPY package-lock.json ./
+
+# Bağımlılıkları yükle
+RUN npm install
+
+# Uygulama kaynak kodunu kopyala
 COPY . .
 
-# Uygulamayı çalıştırın
-CMD ["node", "index.js"]
+# Uygulamanın dinleyeceği portu aç
+EXPOSE 3000
+
+# Uygulamayı başlat
+CMD ["npm", "start"]
