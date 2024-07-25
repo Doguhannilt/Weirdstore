@@ -1,40 +1,30 @@
-name: CI/CD Pipeline
+version: '3.8'
 
-on:
-  push:
-    branches:
-      - master
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mongo
+    networks:
+      - weirdstore
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - weirdstore
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+volumes:
+  mongo-data:
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-
-    - name: Install dependencies
-      run: npm install
-      working-directory: ./backend
-
-    - name: Build Docker image
-      run: docker build -t weirdstore-backend ./backend
-
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Push Docker image to Docker Hub
-      run: docker push weirdstore-backend
-
-    - name: Run Docker Compose
-      run: |
-        echo "MONGO_URI=${{ secrets.MONGO_URI }}" > .env
-        docker-compose up --build
+networks:
+  my-network:
