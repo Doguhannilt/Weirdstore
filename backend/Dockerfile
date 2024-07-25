@@ -7,4 +7,4 @@ WORKDIR /app
 COPY . .
 
 # Uygulamayı çalıştırın
-CMD ["node", "index.js"]
+CMD ["node", "src/index.js"]
