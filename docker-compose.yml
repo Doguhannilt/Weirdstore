@@ -9,6 +9,9 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: development
+    volumes:
+      - ./backend:/app
+    command: ["node", "src/index.js"]
 
   frontend:
     build:
