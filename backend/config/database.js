@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_TEST)
+        await mongoose.connect("mongodb://127.0.0.1:27017/dogu")
         console.log(`Successfully connected to the database`)
     } catch (err) {
         console.error("Database Error", err)
