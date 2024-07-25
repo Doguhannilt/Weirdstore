@@ -7,7 +7,7 @@ dotenv.config();
 const connectDB = async () => {
     try {
         // .env dosyasından MONGO_URI'yi al
-        const mongoURI = "mongodb://0.0.0.0:27017/"
+        const mongoURI = "mongodb://mongo:27017/dogu"
 
         if (!mongoURI) {
             console.error('MONGO_URI environment variable is not set');
