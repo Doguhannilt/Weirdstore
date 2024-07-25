@@ -9,10 +9,12 @@ Welcome to **weirdstore**, your one-stop solution for managing your store with a
 - [Technologies Used](#technologies-used)
 - [Why Redux RTK](#why-redux-rtk)
 - [Installation](#installation)
+- [Dockerization](#dockerization)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Postman Collection](#postman-collection)
 - [License](#license)
+  
 
 
 ## Introduction
@@ -108,6 +110,94 @@ We welcome contributions from the community! If you would like to contribute to 
    ```
 
 5. **Create a Pull Request**: Submit your changes for review.
+
+# Dockerization
+
+## Weirdstore Backend Setup
+
+This document describes how to set up and run the <a href='https://hub.docker.com/repository/docker/doguhannilt/weirdstore-backend'>`doguhannilt/weirdstore-backend`</a> Docker container, including how to connect it to a MongoDB instance.
+
+## Prerequisites
+
+- Docker installed on your system.
+- Docker Compose (if using Docker Compose for multi-container setups).
+
+## Steps to Set Up and Run
+
+1. **Clone the Repository**
+
+   First, clone the repository containing the Docker setup:
+
+   ```bash
+   git clone https://github.com/weirdstore.git
+   cd your-repository
+   ```
+
+2. **Create a Docker Network**
+
+   Create a Docker network if it does not already exist. This network will allow your containers to communicate with each other:
+
+   ```bash
+   docker network create weirdstore
+   ```
+
+3. **Run MongoDB Container**
+
+   Start a MongoDB container on the `weirdstore` network. This example uses the official MongoDB Docker image:
+
+   ```bash
+   docker run -d --network weirdstore --name mongo mongo:latest
+   ```
+
+4. **Run the Backend Container**
+
+   Start the `doguhannilt/weirdstore-backend` container on the same network:
+
+   ```bash
+   docker run -d --network weirdstore --name backend -e MONGO_URI=mongodb://mongo:27017/ doguhannilt/weirdstore-backend
+   ```
+
+   Here, the `MONGO_URI` environment variable is set to point to the MongoDB container (`mongo`) on the `weirdstore` network.
+
+5. **Verify Container Status**
+
+   Check if both containers are running:
+
+   ```bash
+   docker ps
+   ```
+
+   You should see both `mongo` and `backend` containers listed.
+
+6. **Access Logs**
+
+   To view the logs of the backend container:
+
+   ```bash
+   docker logs backend
+   ```
+
+   To view the logs of the MongoDB container:
+
+   ```bash
+   docker logs mongo
+   ```
+
+## Troubleshooting
+
+- **Cannot connect to MongoDB:** Ensure that the MongoDB container is running and accessible. Verify the `MONGO_URI` is correctly set in the backend container.
+- **MongoDB container not found:** Double-check that the MongoDB container is running on the `weirdstore` network and that you used the correct container name in the `MONGO_URI`.
+
+## Cleaning Up
+
+To stop and remove the containers and network when you are done:
+
+```bash
+docker stop backend mongo
+docker rm backend mongo
+docker network rm weirdstore
+```
+
 
 ## Acknowledgements
 
