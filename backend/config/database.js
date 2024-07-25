@@ -1,13 +1,25 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+// .env dosyasını yükle
+dotenv.config();
 
 const connectDB = async () => {
     try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/dogu")
-        console.log(`Successfully connected to the database`)
+        // .env dosyasından MONGO_URI'yi al
+        const mongoURI = process.env.MONGO_URI;
+
+        if (!mongoURI) {
+            console.error('MONGO_URI environment variable is not set');
+            process.exit(1);
+        }
+
+        await mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+        console.log(`Successfully connected to the database`);
     } catch (err) {
-        console.error("Database Error", err)
-        process.exit(1)
+        console.error("Database Error", err);
+        process.exit(1);
     }
 }
 
-export default connectDB
+export default connectDB;
