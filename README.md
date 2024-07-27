@@ -6,6 +6,7 @@ Welcome to **weirdstore**, your one-stop solution for managing your store with a
 
 - [Introduction](#introduction)
 - [Features](#features)
+- [Images and Video](#images-and-video)
 - [Technologies Used](#technologies-used)
 - [Why Redux RTK](#why-redux-rtk)
 - [Installation](#installation)
@@ -20,6 +21,23 @@ Welcome to **weirdstore**, your one-stop solution for managing your store with a
 ## Introduction
 
 **Weirdstore** is a comprehensive and innovative store management system designed to simplify and enhance the way you run your store. Whether you are managing a small boutique or a large retail chain, weirdstore provides the tools you need to succeed.
+
+## IMAGES AND VIDEO
+[shop.webm](https://github.com/user-attachments/assets/ab98d490-2ed2-47c0-9f6b-d9fa3467c296)
+
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/0c31a860-5c51-4131-8a19-03c5045fd89f" alt="BG" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/da299e20-4112-4797-b569-dd76b47f7a57" alt="BG" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/9cbbbf60-02c2-439f-9dee-cc9f95a1db50" alt="BG" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/ef99a5be-40db-443f-968a-557966803ff9" alt="BG" width="300"></td>
+  </tr>
+</table>
+
+
+
+
+
 
 ## Features
 
