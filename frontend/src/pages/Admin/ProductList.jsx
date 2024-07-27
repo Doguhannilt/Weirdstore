@@ -86,7 +86,7 @@ const ProductList = () => {
                 <AdminMenu />
                 {/* Left Section */}
                 <div className="md:w-3/4 p-3">
-                    <div className="mb-4 text-xl font-bold">Create Product</div>
+                    <div className="mb-4 text-2xl font-bold">Create Product</div>
                     
                     {/* Display uploaded image */}
                     {imageUrl && (
@@ -106,46 +106,46 @@ const ProductList = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Name */}
                         <div className="mb-4">
-                            <label htmlFor="name" className="block text-white">Name</label>
-                            <input type="text" className="p-4 border rounded-lg bg-[#101011] text-white w-full" value={name} onChange={(e) => setName(e.target.value)} />
+                            <label htmlFor="name" className="block text-black">Name</label>
+                            <input type="text" className="p-4 border rounded-lg text-black w-full" value={name} onChange={(e) => setName(e.target.value)} />
                         </div>
                         
                         {/* Price */}
                         <div className="mb-4">
-                            <label htmlFor="price" className="block text-white">Price</label>
-                            <input type="number" className="p-4 border rounded-lg bg-[#101011] text-white w-full" value={price} onChange={(e) => setPrice(e.target.value)} />
+                            <label htmlFor="price" className="block text-black">Price</label>
+                            <input type="number" className="p-4 border rounded-lg text-black w-full" value={price} onChange={(e) => setPrice(e.target.value)} />
                         </div>
 
                         {/* Quantity */}
                         <div className="mb-4">
-                            <label htmlFor="quantity" className="block text-white">Quantity</label>
-                            <input type="number" className="p-4 border rounded-lg bg-[#101011] text-white w-full" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                            <label htmlFor="quantity" className="block text-black">Quantity</label>
+                            <input type="number" className="p-4 border rounded-lg text-black w-full" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
                         </div>
                         
                         {/* Brand */}
                         <div className="mb-4">
-                            <label htmlFor="brand" className="block text-white">Brand</label>
-                            <input type="text" className="p-4 border rounded-lg bg-[#101011] text-white w-full" value={brand} onChange={(e) => setBrand(e.target.value)} />
+                            <label htmlFor="brand" className="block text-black">Brand</label>
+                            <input type="text" className="p-4 border rounded-lg text-black w-full" value={brand} onChange={(e) => setBrand(e.target.value)} />
                         </div>
 
                         {/* Description */}
                         <div className="col-span-2 mb-4">
-                            <label htmlFor="description" className="block text-white">Description</label>
-                            <textarea className="p-4 border rounded-lg bg-[#101011] text-white w-full" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                            <label htmlFor="description" className="block text-black">Description</label>
+                            <textarea className="p-4 border rounded-lg text-black w-full" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                         </div>
 
                         {/* Stock and Category */}
                         <div>
                             {/* Stock */}
                             <div className="mb-4">
-                                <label htmlFor="stock" className="block text-white">Count In Stock</label>
-                                <input type="number" className="p-4 border rounded-lg bg-[#101011] text-white w-full" value={stock} onChange={(e) => setStock(e.target.value)} />
+                                <label htmlFor="stock" className="block text-black">Count In Stock</label>
+                                <input type="number" className="p-4 border rounded-lg text-black w-full" value={stock} onChange={(e) => setStock(e.target.value)} />
                             </div>
                             
                             {/* Category */}
                             <div className="mb-4">
-                                <label htmlFor="category" className="block text-white">Category</label>
-                                <select className="p-3 border rounded-lg bg-[#101011] text-white w-full" onChange={(e) => setCategory(e.target.value)}>
+                                <label htmlFor="category" className="block text-black">Category</label>
+                                <select className="p-3 border rounded-lg  text-black w-full" onChange={(e) => setCategory(e.target.value)}>
                                     <option value="">Choose Category</option>
                                     {categories && categories.map((c) => (
                                         <option key={c._id} value={c._id}>{c.name}</option>
@@ -155,7 +155,7 @@ const ProductList = () => {
                         </div>
                     </div>
                     <button
-                            className="py-4 px-10 mt-5 rounded-lg text-lg font-bold bg-pink-600"
+                            className="py-4 px-10 mt-5 rounded-lg text-lg font-bold text-white bg-pink-600"
                             onClick={handleSubmit}>
                             Submit
                     </button>

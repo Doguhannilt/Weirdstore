@@ -5,7 +5,7 @@ export const userInfoAdmin = [
     NAME: "Dashboard"
   },
   {
-    URL: "/admin/productlist",
+    URL: "/admin/productlist/1",
     STYLE: 'block px-4 py-2 hover:bg-gray-200',
     NAME: "Products"
   },
@@ -25,7 +25,7 @@ export const userInfoAdmin = [
     NAME: "Users"
   },
   {
-    URL: "/admin/profile",
+    URL: "/profile",
     STYLE: 'block px-4 py-2 hover:bg-gray-200',
     NAME: "Profile"
   },

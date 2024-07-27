@@ -10,7 +10,7 @@ const Home = () => {
 
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto ml-40 px-4 py-8 bg-white ">
             {!isLoading ? (
                 isError ? (
                     <Message variant='danger'>
@@ -24,16 +24,16 @@ const Home = () => {
                                 Shop
                             </Link>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid md:grid-cols-3 gap-6">
                             {data.products.map((product) => (
-                                <div key={product._id} className="bg-white rounded-lg overflow-hidden shadow-lg">
+                                <div key={product._id} className="rounded-lg overflow-hidden  shadow-2xl shadow-slate-400 border-neutral-400 py-4">
                                     <Product product={product} />
-                                    <div className="p-4">
+                                    <div className="">
                                         <Link to={`/products/${product._id}`} className="block">
-                                            <h2 className="text-lg font-bold mb-2">{product.name}</h2>
+                                            <h2 className="text-lg font-bold mb-2 ml-4">{product.name}</h2>
                                         </Link>
                                         <div className="flex items-center justify-between">
-                                            <span className="text-gray-700">${product.price}</span>
+                                            <span className="text-gray-700 ml-4">${product.price}</span>
                                             <HeartIcon product={product} />
                                         </div>
                                     </div>

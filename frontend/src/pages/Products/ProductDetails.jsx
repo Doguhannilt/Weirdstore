@@ -70,7 +70,7 @@ const ProductDetails = () => {
                         <img
                             src={product.image}
                             alt={product.name}
-                            className='w-full rounded-lg shadow-lg mb-4 h-full'
+                            className='rounded-lg shadow-lg mb-4 w-[40rem] h-[40rem] ml-10'
                         />
                         <HeartIcon product={product} />
                     </div>
