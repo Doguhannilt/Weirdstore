@@ -1,0 +1,9 @@
+.sidebar:hover .sidebar-text {
+    display: inline;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar-text {
+    transition: opacity 0.3s ease-in-out;
+}
