@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-// .env dosyasını yükle
+
 dotenv.config();
 
 const connectDB = async () => {

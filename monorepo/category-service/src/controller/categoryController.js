@@ -3,6 +3,7 @@ import Category from "../models/categoryModel.js";
 
 const createCategory = asyncHandler(async (req, res) => {
     try {
+        console.log("Received request to create category:", req.body )
         const {name} = req.body
  
         if (!name) {
