@@ -18,10 +18,7 @@ import {
 }
 from '../utils/authMidd.js'
 
-
-
 const router = express.Router()
-
 
 router
     .route('/')

@@ -1,7 +1,8 @@
 import User from '../models/userModel.js'
 import asyncHandler from '../utils/asyncHandler.js'
 import bcrypt from 'bcryptjs'
-import implementToken from '../utils/imlementToken.js'
+import implementToken from '../utils/implementToken.js'
+import logger from '../config/logger.js'
 
 // Create a user
 const createUser = asyncHandler(async (req, res) => {
@@ -45,7 +46,7 @@ const createUser = asyncHandler(async (req, res) => {
     // jwt
     implementToken(res, newUser._id)
 
-    try {
+    try { 
         await newUser
             .save()
         res.status(201).json({
@@ -54,8 +55,11 @@ const createUser = asyncHandler(async (req, res) => {
             password: newUser.password
         })
 
+        logger.info(newUser + " created")
+
     } catch (err) {
         res.status(400)
+        logger.info(err.message)
         throw new Error("Invalid User Data")
     }
 
@@ -82,11 +86,12 @@ const loginUser = asyncHandler(async (req, res) => {
                 email: existingUser.email,
                 isAdmin: existingUser.isAdmin
             })
+
+            logger.info("username:" + existingUser.username + "email:" + existingUser.email + "id: " + existingUser._id + " logged in")
+
             return 
         }
     }
-
-
 })
 
 // Logout
@@ -220,10 +225,7 @@ const updateUserById = asyncHandler(async (req, res) => {
     }
 })
 
-
-
 export {
-
     createUser, 
     loginUser,
     logoutUser,
